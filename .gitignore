@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Remove this and edit the README.md
+
+*.md
+/design
