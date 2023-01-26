@@ -31,5 +31,11 @@ export const GlobalStyles = createGlobalStyle`
       padding: 0;
       box-sizing: border-box;
       font-family: 'Ubuntu Regular';
+      font-size: ${({ theme }) => theme.font.size.paragraph};
+    }
+
+    button {
+      border: 0;
+      background-color: transparent;
     }
 `
