@@ -1,4 +1,4 @@
-import { FooterContainer } from "./styles";
+import { FooterContainer } from './styles'
 
 type FooterPropsType = {
   currentIndex: number
@@ -7,15 +7,24 @@ type FooterPropsType = {
   previousStep(): void
 }
 
-export function Footer({ currentIndex, steps, previousStep, nextStep }: FooterPropsType) {
+export function Footer({
+  currentIndex,
+  steps,
+  previousStep,
+  nextStep,
+}: FooterPropsType) {
   const isFirstStep = currentIndex === 1
   const isLastStep = steps.length === currentIndex
 
   return (
     <FooterContainer isLastStep={isLastStep}>
-      {!isFirstStep && <button type="button" onClick={previousStep}>Go Back</button>}
+      {!isFirstStep && (
+        <button type="button" onClick={previousStep}>
+          Go Back
+        </button>
+      )}
       <button
-        type={isLastStep ? "submit" : "button"}
+        type={isLastStep ? 'submit' : 'button'}
         onClick={(e) => {
           if (!isLastStep) {
             e.preventDefault()
@@ -23,7 +32,7 @@ export function Footer({ currentIndex, steps, previousStep, nextStep }: FooterPr
           nextStep()
         }}
       >
-        {isLastStep ? "Confirm" : "Next Step"}
+        {isLastStep ? 'Confirm' : 'Next Step'}
       </button>
     </FooterContainer>
   )

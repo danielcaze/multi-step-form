@@ -1,9 +1,9 @@
-import { FormEvent, useState } from "react"
-import { Footer } from "./components/Footer";
-import { Steps } from "./components/Steps"
+import { FormEvent, useState } from 'react'
+import { Footer } from './components/Footer'
+import { Steps } from './components/Steps'
 
 export function App() {
-  const [currentStep, setStep] = useState(1);
+  const [currentStep, setStep] = useState(1)
 
   const steps = ['Your info', 'Select Plan', 'Add-ons', 'Summary']
 
@@ -12,7 +12,7 @@ export function App() {
   }
 
   function nextStep() {
-    setStep(state => {
+    setStep((state) => {
       if (state < steps.length) {
         return state + 1
       }
@@ -21,7 +21,7 @@ export function App() {
   }
 
   function previousStep() {
-    setStep(state => {
+    setStep((state) => {
       if (state > 1) {
         return state - 1
       }
@@ -35,12 +35,21 @@ export function App() {
 
   return (
     <form style={{ height: '700px', width: '300px' }} onSubmit={handleSubmit}>
-      <Steps currentIndex={currentStep} steps={steps} changeCurrentStep={changeCurrentStep} />
+      <Steps
+        currentIndex={currentStep}
+        steps={steps}
+        changeCurrentStep={changeCurrentStep}
+      />
       {/* <main>
         
       </main>
        */}
-      <Footer currentIndex={currentStep} steps={steps} nextStep={nextStep} previousStep={previousStep} />
+      <Footer
+        currentIndex={currentStep}
+        steps={steps}
+        nextStep={nextStep}
+        previousStep={previousStep}
+      />
     </form>
   )
 }

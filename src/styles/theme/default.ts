@@ -12,19 +12,19 @@ export const DefaultTheme = {
       'light-gray': 'hsl(229, 24%, 87%)',
       magnolia: 'hsl(217, 10%, 9%)',
       alabaster: 'hsl(231, 100%, 99%)',
-      white: 'hsl(0, 0%, 100%)'
-    }
+      white: 'hsl(0, 0%, 100%)',
+    },
   },
   font: {
     size: {
-      paragraph: '1rem'
+      paragraph: '1rem',
     },
     family: {
       regular: 'Ubuntu Regular',
       medium: 'Ubuntu Medium',
-      bold: 'Ubuntu Bold'
-    }
-  }
+      bold: 'Ubuntu Bold',
+    },
+  },
 } as const
 
 export type DefaultThemeType = typeof DefaultTheme

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 import UbuntuRegular from '../assets/fonts/Ubuntu-Regular.ttf'
 import UbuntuMedium from '../assets/fonts/Ubuntu-Medium.ttf'
 import UbuntuBold from '../assets/fonts/Ubuntu-Bold.ttf'

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
 import MobileBackground from '../../assets/images/bg-sidebar-mobile.svg'
 import DesktopBackground from '../../assets/images/bg-sidebar-desktop.svg'
 
@@ -12,7 +12,7 @@ export const StepsContainer = styled.header`
   padding-top: 2rem;
   padding-inline: 5vw;
   border-radius: 12px;
-  
+
   background-size: cover;
   background-image: url(${MobileBackground});
   background-repeat: no-repeat;
@@ -34,7 +34,7 @@ type StepPropsType = {
 }
 
 export const StepsContent = styled.button.attrs({
-  type: "button",
+  type: 'button',
 })`
   display: flex;
   align-items: center;
@@ -46,11 +46,11 @@ export const StepsContent = styled.button.attrs({
     text-align: left;
 
     span {
-      color: ${({ theme }) => theme.color.neutral["cool-gray"]};
+      color: ${({ theme }) => theme.color.neutral['cool-gray']};
       font-family: ${({ theme }) => theme.font.family.regular};
       font-size: 0.875rem;
     }
-    
+
     p {
       color: ${({ theme }) => theme.color.neutral.white};
       font-family: ${({ theme }) => theme.font.family.medium};
@@ -64,7 +64,6 @@ export const StepsContent = styled.button.attrs({
     }
   }
 `
-
 
 export const Step = styled.span<StepPropsType>`
   font-family: ${({ theme }) => theme.font.family.medium};
@@ -80,9 +79,11 @@ export const Step = styled.span<StepPropsType>`
   background-color: transparent;
   color: ${({ theme }) => theme.color.neutral.white};
 
-  ${({ current, theme }) => current && css`
-    border: 1px solid  ${theme.color.neutral.alabaster};
-    background-color: ${theme.color.primary["light-blue"]};
-    color: ${({ theme }) => theme.color.neutral.magnolia};
-  `}
+  ${({ current, theme }) =>
+    current &&
+    css`
+      border: 1px solid ${theme.color.neutral.alabaster};
+      background-color: ${theme.color.primary['light-blue']};
+      color: ${({ theme }) => theme.color.neutral.magnolia};
+    `}
 `

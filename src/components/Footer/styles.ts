@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
 
 type FooterContainerPropstype = {
   isLastStep: boolean
@@ -9,8 +9,8 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
   align-items: center;
 
   padding: 0.75rem;
-  
-  color: ${({ theme }) => theme.color.neutral["cool-gray"]};
+
+  color: ${({ theme }) => theme.color.neutral['cool-gray']};
   font-family: ${({ theme }) => theme.font.family.medium};
 
   button:first-child:hover {
@@ -21,7 +21,7 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
   button:last-child {
     margin-left: auto;
     color: ${({ theme }) => theme.color.neutral.alabaster};
-    background-color: ${({ theme }) => theme.color.primary["marine-blue"]};
+    background-color: ${({ theme }) => theme.color.primary['marine-blue']};
     padding: 0.75rem;
     border-radius: 4px;
 
@@ -30,9 +30,11 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
       transition: filter 0.5s;
     }
 
-    ${({ theme, isLastStep }) => isLastStep && css`
-      background-color: ${theme.color.primary["purplish-blue"]};
-    `}
+    ${({ theme, isLastStep }) =>
+      isLastStep &&
+      css`
+        background-color: ${theme.color.primary['purplish-blue']};
+      `}
   }
 
   @media (min-width: 768px) {
