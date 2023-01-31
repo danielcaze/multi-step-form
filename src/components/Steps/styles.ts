@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import MobileBackground from '../../assets/images/bg-sidebar-mobile.svg'
 import DesktopBackground from '../../assets/images/bg-sidebar-desktop.svg'
 
-export const HeaderContainer = styled.header`
+export const StepsContainer = styled.header`
   height: 12rem;
   display: flex;
   align-items: flex-start;
@@ -33,7 +33,7 @@ type StepPropsType = {
   current: boolean
 }
 
-export const StepContainer = styled.button.attrs({
+export const StepsContent = styled.button.attrs({
   type: "button",
 })`
   display: flex;

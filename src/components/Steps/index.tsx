@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
-import { HeaderContainer, Step, StepContainer } from "./styles";
+import { Step, StepsContainer, StepsContent } from "./styles";
 
-type HeaderPropsType = {
+type StepsPropsType = {
   currentIndex: number
   steps: string[]
   changeCurrentStep(currentStep: number): void
@@ -11,23 +11,23 @@ type HeaderPropsType = {
   I Think this step counter component could be refactored
 */
 
-export function Header({ currentIndex, steps, changeCurrentStep }: HeaderPropsType) {
+export function Steps({ currentIndex, steps, changeCurrentStep }: StepsPropsType) {
   return (
-    <HeaderContainer>
+    <StepsContainer>
       {
         steps.map((step, index) => {
           const stepNumber = index + 1
           return (
-            <StepContainer key={step} onClick={() => changeCurrentStep(stepNumber)}>
+            <StepsContent key={step} onClick={() => changeCurrentStep(stepNumber)}>
               <Step current={currentIndex === stepNumber}>{stepNumber}</Step>
               <div>
                 <span>Step {stepNumber}</span>
                 <p>{step}</p>
               </div>
-            </StepContainer>
+            </StepsContent>
           )
         })
       }
-    </HeaderContainer>
+    </StepsContainer>
   )
 }
