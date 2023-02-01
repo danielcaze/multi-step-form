@@ -4,6 +4,7 @@ import ArcadeIcon from '../assets/images/icon-arcade.svg'
 import AdvancedIcon from '../assets/images/icon-advanced.svg'
 import ProIcon from '../assets/images/icon-pro.svg'
 import { useState } from 'react'
+import { Switch } from './Switch'
 
 export function SecondStep() {
   const plans = [
@@ -25,9 +26,15 @@ export function SecondStep() {
   ]
 
   const [selectedPlan, setSelectedPlan] = useState(plans[0].title)
+  const [isYear, setIsYear] = useState(false)
+  const recurringType = isYear ? 'yearly' : 'monthly'
 
   function handleChangePlan(plan: string) {
     setSelectedPlan(plan)
+  }
+
+  function handleChangeRecurringType(recurringType: boolean) {
+    setIsYear(recurringType)
   }
 
   return (
@@ -39,11 +46,17 @@ export function SecondStep() {
       <fieldset style={{ border: 'none' }}>
         <RadioGroup
           items={plans}
-          recurringType={'monthly'}
+          recurringType={recurringType}
           changePlan={handleChangePlan}
           plan={selectedPlan}
         />
       </fieldset>
+      <Switch
+        leftItem="Monthly"
+        rightItem="Yearly"
+        toggleSwitch={handleChangeRecurringType}
+        switchValue={isYear}
+      />
     </>
   )
 }

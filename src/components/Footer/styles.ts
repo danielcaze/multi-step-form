@@ -37,8 +37,8 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
     }
 
     ${({ theme, isLastStep }) =>
-    isLastStep &&
-    css`
+      isLastStep &&
+      css`
         background-color: ${theme.color.primary['purplish-blue']};
       `}
   }

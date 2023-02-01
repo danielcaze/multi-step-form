@@ -10,6 +10,7 @@
     "lint": "eslint src --ext .ts,.tsx --fix"
   },
   "dependencies": {
+    "@radix-ui/react-switch": "^1.0.1",
     "@radix-ui/react-toggle-group": "^1.0.2",
     "polished": "^4.2.2",
     "react": "^18.2.0",

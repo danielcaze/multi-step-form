@@ -42,7 +42,7 @@ export const RadioContent = styled(ToggleGroup.Item)`
 
   &[data-state='on'] {
     background: ${({ theme }) =>
-    lighten(0.12, theme.color.primary['pastel-blue'])};
+      lighten(0.12, theme.color.primary['pastel-blue'])};
     border-color: ${({ theme }) => theme.color.primary['marine-blue']};
     transition: all 0.5s;
   }
