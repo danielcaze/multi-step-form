@@ -10,6 +10,11 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
 
   padding: 0.75rem;
 
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   color: ${({ theme }) => theme.color.neutral['cool-gray']};
   font-family: ${({ theme }) => theme.font.family.medium};
 
@@ -31,8 +36,8 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
     }
 
     ${({ theme, isLastStep }) =>
-      isLastStep &&
-      css`
+    isLastStep &&
+    css`
         background-color: ${theme.color.primary['purplish-blue']};
       `}
   }

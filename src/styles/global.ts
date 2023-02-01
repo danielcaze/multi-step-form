@@ -32,6 +32,8 @@ export const GlobalStyles = createGlobalStyle`
       box-sizing: border-box;
       font-family: 'Ubuntu Regular';
       font-size: ${({ theme }) => theme.font.size.paragraph};
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     button {

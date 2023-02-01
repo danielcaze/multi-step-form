@@ -6,12 +6,11 @@ export const StepsContainer = styled.header`
   height: 12rem;
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
-  gap: 0.375rem;
+  justify-content: center;
+  gap: 1rem;
 
   padding-top: 2rem;
   padding-inline: 5vw;
-  border-radius: 12px;
 
   background-size: cover;
   background-image: url(${MobileBackground});
@@ -22,6 +21,8 @@ export const StepsContainer = styled.header`
     padding: 2rem;
     height: 100%;
     background-image: url(${DesktopBackground});
+
+    border-radius: 12px;
 
     flex-direction: column;
     justify-content: flex-start;

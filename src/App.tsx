@@ -1,9 +1,13 @@
 import { FormEvent, useState } from 'react'
+import { useTheme } from 'styled-components'
+import { Box } from './components/Box'
+import { FirstStep } from './components/FirstStep'
 import { Footer } from './components/Footer'
 import { Steps } from './components/Steps'
 
 export function App() {
   const [currentStep, setStep] = useState(1)
+  const { color } = useTheme()
 
   const steps = ['Your info', 'Select Plan', 'Add-ons', 'Summary']
 
@@ -34,16 +38,21 @@ export function App() {
   }
 
   return (
-    <form style={{ height: '700px', width: '300px' }} onSubmit={handleSubmit}>
+    <form
+      style={{
+        height: '100vh',
+        backgroundColor: color.neutral['light-gray'],
+      }}
+      onSubmit={handleSubmit}
+    >
       <Steps
         currentIndex={currentStep}
         steps={steps}
         changeCurrentStep={changeCurrentStep}
       />
-      {/* <main>
-        
-      </main>
-       */}
+      <Box>
+        <FirstStep />
+      </Box>
       <Footer
         currentIndex={currentStep}
         steps={steps}
