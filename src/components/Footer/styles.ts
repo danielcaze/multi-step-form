@@ -8,7 +8,7 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
   display: flex;
   align-items: center;
 
-  padding: 0.75rem;
+  padding: 1rem;
 
   position: fixed;
   bottom: 0;
@@ -16,6 +16,7 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
   right: 0;
 
   color: ${({ theme }) => theme.color.neutral['cool-gray']};
+  background-color: ${({ theme }) => theme.color.neutral.alabaster};
   font-family: ${({ theme }) => theme.font.family.medium};
 
   button:first-child:hover {

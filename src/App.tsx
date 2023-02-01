@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components'
 import { Box } from './components/Box'
 import { FirstStep } from './components/FirstStep'
 import { Footer } from './components/Footer'
+import { SecondStep } from './components/SecondStep'
 import { Steps } from './components/Steps'
 
 export function App() {
@@ -51,7 +52,8 @@ export function App() {
         changeCurrentStep={changeCurrentStep}
       />
       <Box>
-        <FirstStep />
+        {/* <FirstStep /> */}
+        <SecondStep />
       </Box>
       <Footer
         currentIndex={currentStep}

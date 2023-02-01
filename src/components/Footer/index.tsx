@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { FooterContainer } from './styles'
 
 type FooterPropsType = {
@@ -7,7 +8,7 @@ type FooterPropsType = {
   previousStep(): void
 }
 
-export function Footer({
+export const Footer = memo(function FooterComponent({
   currentIndex,
   steps,
   previousStep,
@@ -36,4 +37,4 @@ export function Footer({
       </button>
     </FooterContainer>
   )
-}
+})
