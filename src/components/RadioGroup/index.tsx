@@ -1,6 +1,7 @@
+import { ComponentProps } from 'react'
 import { RadioContainer, RadioContent } from './styles'
 
-type RadioGroupPropsType = {
+type RadioGroupPropsType = ComponentProps<typeof RadioContainer> & {
   items: {
     title: string
     icon?: string
@@ -16,6 +17,7 @@ export function RadioGroup({
   recurringType,
   plan,
   changePlan,
+  ...props
 }: RadioGroupPropsType) {
   return (
     <RadioContainer
@@ -23,6 +25,7 @@ export function RadioGroup({
       value={plan}
       aria-label="Plans"
       onValueChange={(value) => changePlan(value)}
+      {...props}
     >
       {items.map((item) => (
         <RadioContent

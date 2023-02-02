@@ -5,6 +5,7 @@ import { FirstStep } from './components/FirstStep'
 import { Footer } from './components/Footer'
 import { SecondStep } from './components/SecondStep'
 import { Steps } from './components/Steps'
+import { ThirdStep } from './components/ThirdStep'
 
 export function App() {
   const [currentStep, setStep] = useState(1)
@@ -53,7 +54,8 @@ export function App() {
       />
       <Box>
         {/* <FirstStep /> */}
-        <SecondStep />
+        {/* <SecondStep /> */}
+        <ThirdStep />
       </Box>
       <Footer
         currentIndex={currentStep}
