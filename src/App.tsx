@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components'
 import { Box } from './components/Box'
 import { FirstStep } from './components/FirstStep'
 import { Footer } from './components/Footer'
+import { FourthStep } from './components/FourthStep'
 import { SecondStep } from './components/SecondStep'
 import { Steps } from './components/Steps'
 import { ThirdStep } from './components/ThirdStep'
@@ -55,7 +56,8 @@ export function App() {
       <Box>
         {/* <FirstStep /> */}
         {/* <SecondStep /> */}
-        <ThirdStep />
+        {/* <ThirdStep /> */}
+        <FourthStep />
       </Box>
       <Footer
         currentIndex={currentStep}
