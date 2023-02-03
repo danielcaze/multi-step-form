@@ -6,6 +6,7 @@ import { Footer } from './components/Footer'
 import { FourthStep } from './components/FourthStep'
 import { SecondStep } from './components/SecondStep'
 import { Steps } from './components/Steps'
+import { ThankYouStep } from './components/ThankYouStep'
 import { ThirdStep } from './components/ThirdStep'
 
 export function App() {
@@ -57,7 +58,8 @@ export function App() {
         {/* <FirstStep /> */}
         {/* <SecondStep /> */}
         {/* <ThirdStep /> */}
-        <FourthStep />
+        {/* <FourthStep /> */}
+        <ThankYouStep />
       </Box>
       <Footer
         currentIndex={currentStep}
