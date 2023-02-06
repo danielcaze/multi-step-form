@@ -13,6 +13,8 @@ export const RadioContent = styled(ToggleGroup.Item)`
   border-radius: 6px;
   width: 100%;
 
+  transition: all 0.5s;
+
   div {
     display: flex;
     flex-direction: column;
@@ -46,10 +48,32 @@ export const RadioContent = styled(ToggleGroup.Item)`
     border-color: ${({ theme }) => theme.color.primary['marine-blue']};
     transition: all 0.5s;
   }
+
+  &:hover {
+    border-color: ${({ theme }) => theme.color.primary['marine-blue']};
+    transition: border-color 0.5s;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 10rem;
+  }
 `
 
 export const RadioContainer = styled(ToggleGroup.Root)`
   ${RadioContent} + ${RadioContent} {
     margin-top: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    ${RadioContent} + ${RadioContent} {
+      margin-top: 0;
+    }
   }
 `

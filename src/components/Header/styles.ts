@@ -9,4 +9,8 @@ export const HeaderContainer = styled.header`
     color: ${({ theme }) => theme.color.neutral['cool-gray']};
     margin-top: 0.75rem;
   }
+
+  @media (min-width: 768px) {
+    margin-bottom: 3rem;
+  }
 `

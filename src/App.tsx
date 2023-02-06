@@ -1,5 +1,4 @@
-import { FormEvent, useState } from 'react'
-import { useTheme } from 'styled-components'
+import { FormEvent } from 'react'
 import { Box } from './components/Box'
 import { FirstStep } from './components/FirstStep'
 import { Footer } from './components/Footer'
@@ -8,65 +7,47 @@ import { SecondStep } from './components/SecondStep'
 import { Steps } from './components/Steps'
 import { ThankYouStep } from './components/ThankYouStep'
 import { ThirdStep } from './components/ThirdStep'
+import { useMultiStep } from './hooks/useMultiStep'
+import { FormContainer, FormContent } from './styles'
 
 export function App() {
-  const [currentStep, setStep] = useState(1)
-  const { color } = useTheme()
-
   const steps = ['Your info', 'Select Plan', 'Add-ons', 'Summary']
 
-  function changeCurrentStep(step: number) {
-    setStep(step)
-  }
-
-  function nextStep() {
-    setStep((state) => {
-      if (state < steps.length) {
-        return state + 1
-      }
-      return state
-    })
-  }
-
-  function previousStep() {
-    setStep((state) => {
-      if (state > 1) {
-        return state - 1
-      }
-      return state
-    })
-  }
+  /*eslint-disable */
+  const { step, goTo, actualStep, nextStep, previousStep, isLastStep } =
+    useMultiStep([
+      <FirstStep />,
+      <SecondStep />,
+      <ThirdStep />,
+      <FourthStep />,
+      <ThankYouStep />,
+    ])
+  /* eslint-enable */
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
   }
 
   return (
-    <form
-      style={{
-        height: '100vh',
-        backgroundColor: color.neutral['light-gray'],
-      }}
-      onSubmit={handleSubmit}
-    >
-      <Steps
-        currentIndex={currentStep}
-        steps={steps}
-        changeCurrentStep={changeCurrentStep}
-      />
-      <Box>
-        {/* <FirstStep /> */}
-        {/* <SecondStep /> */}
-        {/* <ThirdStep /> */}
-        {/* <FourthStep /> */}
-        <ThankYouStep />
-      </Box>
-      <Footer
-        currentIndex={currentStep}
-        steps={steps}
-        nextStep={nextStep}
-        previousStep={previousStep}
-      />
-    </form>
+    <FormContainer>
+      <FormContent onSubmit={handleSubmit}>
+        <Steps
+          currentIndex={actualStep}
+          steps={steps}
+          changeCurrentStep={goTo}
+        />
+        <main>
+          <Box>{step}</Box>
+          {!isLastStep && (
+            <Footer
+              currentIndex={actualStep}
+              steps={steps}
+              nextStep={nextStep}
+              previousStep={previousStep}
+            />
+          )}
+        </main>
+      </FormContent>
+    </FormContainer>
   )
 }

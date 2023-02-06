@@ -7,12 +7,12 @@ type InputPropsType = InputHTMLAttributes<HTMLInputElement> & {
 
 export function Input({ label, ...props }: InputPropsType) {
   return (
-    <InputContainer>
+    <InputContainer hasError={false}>
       <div>
         <label htmlFor={label}>{label}</label>
         <span>This field is required</span>
       </div>
-      <InputContent hasError={false} id={label} {...props} />
+      <InputContent id={label} {...props} />
     </InputContainer>
   )
 }

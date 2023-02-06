@@ -44,6 +44,10 @@ export const FooterContainer = styled.footer<FooterContainerPropstype>`
   }
 
   @media (min-width: 768px) {
+    position: initial;
+    padding: 1.5rem;
+    background-color: ${({ theme }) => theme.color.neutral.white};
+
     button:last-child {
       border-radius: 8px;
       padding: 0.875rem 1.5rem;

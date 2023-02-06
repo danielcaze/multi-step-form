@@ -7,6 +7,11 @@ const BoxContainer = styled.div`
   padding: 2rem 1.5rem;
   border-radius: 12px;
   margin-top: -4.5rem;
+  flex: 1;
+
+  @media (min-width: 768px) {
+    margin: 0;
+  }
 `
 
 type BoxPropsType = ComponentProps<typeof BoxContainer> & {

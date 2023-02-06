@@ -10,7 +10,7 @@ export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
 
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.5s, border-color 0.5s;
 
   label {
     padding: 1rem;
@@ -39,7 +39,7 @@ export const CheckboxContainer = styled.div`
   }
 
   &:has([data-state='checked']) {
-    transition: background-color 0.2s, border-color 0.2s;
+    transition: background-color 0.5s, border-color 0.5s;
     background-color: ${({ theme }) =>
       lighten(0.35, theme.color.primary['purplish-blue'])};
     border-color: ${({ theme }) => theme.color.primary['purplish-blue']};
@@ -47,6 +47,15 @@ export const CheckboxContainer = styled.div`
 
   & + div {
     margin-top: 1rem;
+  }
+
+  &:hover {
+    transition: border-color 0.5s;
+    border-color: ${({ theme }) => theme.color.primary['purplish-blue']};
+  }
+
+  @media (min-width: 768px) {
+    height: 5.5rem;
   }
 `
 
@@ -62,7 +71,7 @@ export const CheckboxRoot = styled(Checkbox.Root)`
   border: 1px solid ${({ theme }) => theme.color.neutral['cool-gray']};
 
   &[data-state='checked'] {
-    transition: background-color 0.2s;
+    transition: background-color 0.5s;
     background-color: ${({ theme }) => theme.color.primary['purplish-blue']};
   }
 

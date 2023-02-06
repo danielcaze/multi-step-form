@@ -20,6 +20,14 @@ const ThankYouContainer = styled.div`
     color: ${({ theme }) => theme.color.neutral['cool-gray']};
     max-width: 293px;
   }
+
+  @media (min-width: 768px) {
+    height: 100%;
+
+    p {
+      max-width: 600px;
+    }
+  }
 `
 
 export function ThankYouStep() {

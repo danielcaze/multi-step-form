@@ -6,10 +6,6 @@ type StepsPropsType = {
   changeCurrentStep(currentStep: number): void
 }
 
-/* 
-  I Think this step counter component could be refactored
-*/
-
 export function Steps({
   currentIndex,
   steps,
@@ -20,11 +16,15 @@ export function Steps({
       {steps.map((step, index) => {
         const stepNumber = index + 1
         return (
-          <StepsContent
-            key={step}
-            onClick={() => changeCurrentStep(stepNumber)}
-          >
-            <Step current={currentIndex === stepNumber}>{stepNumber}</Step>
+          <StepsContent key={step} onClick={() => changeCurrentStep(index)}>
+            <Step
+              current={
+                currentIndex === stepNumber ||
+                (stepNumber === steps.length && currentIndex >= steps.length)
+              }
+            >
+              {stepNumber}
+            </Step>
             <div>
               <span>Step {stepNumber}</span>
               <p>{step}</p>

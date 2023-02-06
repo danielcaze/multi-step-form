@@ -16,7 +16,7 @@ export const SwitchContainer = styled.div`
     lighten(0.13, theme.color.primary['pastel-blue'])};
 
   > button {
-    transition: color 0.1s;
+    transition: color 0.5s;
     font-family: ${({ theme }) => theme.font.family.medium};
   }
 
@@ -47,7 +47,7 @@ export const SwitchThumb = styled(Switch.SwitchThumb)`
   border-radius: 100%;
 
   transform: translateX(0.175rem);
-  transition: transform 0.1s;
+  transition: transform 0.5s;
 
   &[data-state='checked'] {
     transform: translateX(1.325rem);

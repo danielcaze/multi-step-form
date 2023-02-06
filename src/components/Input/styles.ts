@@ -4,7 +4,7 @@ type InputContainerProps = {
   hasError: boolean
 }
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<InputContainerProps>`
   div {
     display: flex;
     align-items: center;
@@ -19,9 +19,28 @@ export const InputContainer = styled.div`
   & + div {
     margin-top: 1rem;
   }
+
+  ${({ hasError, theme }) =>
+    hasError &&
+    css`
+      div span {
+        display: inline;
+        color: ${({ theme }) => theme.color.primary['strawberry-red']};
+      }
+
+      input {
+        border-color: ${theme.color.primary['strawberry-red']};
+      }
+    `}
+
+  @media (min-width: 768px) {
+    & + div {
+      margin-top: 2rem;
+    }
+  }
 `
 
-export const InputContent = styled.input<InputContainerProps>`
+export const InputContent = styled.input`
   width: 100%;
   padding: 0.825rem;
   border: 1px solid ${({ theme }) => theme.color.neutral['light-gray']};
@@ -32,7 +51,8 @@ export const InputContent = styled.input<InputContainerProps>`
 
   outline: 0;
 
-  &:focus {
+  &:focus,
+  &:hover {
     border-color: ${({ theme }) => theme.color.primary['marine-blue']};
     transition: border-color 0.5s;
   }
@@ -41,9 +61,9 @@ export const InputContent = styled.input<InputContainerProps>`
     color: ${({ theme }) => theme.color.neutral['cool-gray']};
   }
 
-  ${({ hasError, theme }) =>
-    hasError &&
-    css`
-      border-color: ${theme.color.primary['strawberry-red']};
-    `}
+  @media (min-width: 768px) {
+    height: 3.5rem;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+  }
 `

@@ -18,6 +18,17 @@ export const FourthStepContainer = styled.div`
       }
     }
   }
+  @media (min-width: 768px) {
+    div:last-child {
+      padding: 1.5rem;
+
+      strong {
+        &:last-child {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
 `
 
 export const FourthStepContent = styled.div`
@@ -46,6 +57,11 @@ export const FourthStepContent = styled.div`
         font-family: ${({ theme }) => theme.font.family.medium};
         color: ${({ theme }) => theme.color.neutral['cool-gray']};
         text-decoration: underline;
+
+        &:hover {
+          transition: color 0.5s;
+          color: ${({ theme }) => theme.color.primary['purplish-blue']};
+        }
       }
     }
   }
@@ -58,7 +74,7 @@ export const FourthStepContent = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 1rem;
+      margin-top: 1rem;
 
       span {
         &:first-child {
@@ -68,6 +84,20 @@ export const FourthStepContent = styled.div`
         &:last-child {
           color: ${({ theme }) => theme.color.primary['marine-blue']};
         }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+
+    > div {
+      margin-bottom: 1.5rem;
+    }
+
+    div + ul {
+      li {
+        margin-top: 1.5rem;
       }
     }
   }
