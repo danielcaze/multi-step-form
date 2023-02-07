@@ -3,7 +3,10 @@ import { Header } from './Header'
 import { Input } from './Input'
 
 export function FirstStep() {
-  const { control } = useFormContext()
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext()
   return (
     <>
       <Header
@@ -19,6 +22,7 @@ export function FirstStep() {
               type="text"
               label="Name"
               placeholder="e.g. Daniel Cazé"
+              error={errors.name?.message as string}
             />
           )}
           name="name"
@@ -32,6 +36,7 @@ export function FirstStep() {
               type="email"
               label="Email Address"
               placeholder="e.g. danielcaze@lorem.com"
+              error={errors.email?.message as string}
             />
           )}
           name="email"
@@ -44,6 +49,7 @@ export function FirstStep() {
               type="tel"
               label="Phone Number"
               placeholder="e.g. +55 83 988979997"
+              error={errors.phone?.message as string}
             />
           )}
           name="phone"

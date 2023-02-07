@@ -3,14 +3,15 @@ import { InputContainer, InputContent } from './styles'
 
 type InputPropsType = InputHTMLAttributes<HTMLInputElement> & {
   label: string
+  error?: string
 }
 
-export function Input({ label, ...props }: InputPropsType) {
+export function Input({ label, error, ...props }: InputPropsType) {
   return (
-    <InputContainer hasError={false}>
+    <InputContainer hasError={!!error}>
       <div>
         <label htmlFor={label}>{label}</label>
-        <span>This field is required</span>
+        {!!error && <span>{error}</span>}
       </div>
       <InputContent id={label} {...props} />
     </InputContainer>

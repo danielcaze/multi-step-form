@@ -1,4 +1,7 @@
+import { useFormContext } from 'react-hook-form'
 import { Header } from '../Header'
+import { plans } from '../SecondStep'
+import { addOns } from '../ThirdStep'
 import { FourthStepContainer, FourthStepContent } from './styles'
 
 type FourthStepPropsType = {
@@ -6,6 +9,20 @@ type FourthStepPropsType = {
 }
 
 export function FourthStep({ goTo }: FourthStepPropsType) {
+  const { watch } = useFormContext()
+
+  const selectedAddOnsName = watch('addOns')
+  const selectedAddons = addOns.filter((addOn) =>
+    selectedAddOnsName.includes(addOn.title),
+  )
+
+  const selectedPlanName = watch('plan')
+  const selectedPlan = plans.find((plan) => plan.title === selectedPlanName)
+
+  const total =
+    selectedAddons
+      .map((addOn) => Number(addOn.pricing))
+      .reduce((acc, total) => acc + total, 0) + Number(selectedPlan?.pricing)
   return (
     <>
       <Header
@@ -16,27 +33,25 @@ export function FourthStep({ goTo }: FourthStepPropsType) {
         <FourthStepContent>
           <div>
             <div>
-              <span>Arcade &#40;monthly&#41;</span>
+              <span>{selectedPlanName} &#40;Month&#41;</span>
               <button type="button" onClick={() => goTo(2)}>
                 Change
               </button>
             </div>
-            <span>$9/mo</span>
+            <span>${selectedPlan?.pricing}/mo</span>
           </div>
           <ul>
-            <li>
-              <span>Online service</span>
-              <span>+$1/mo</span>
-            </li>
-            <li>
-              <span>Larger storage</span>
-              <span>+$2/mo</span>
-            </li>
+            {selectedAddons.map((addOn) => (
+              <li key={addOn.title}>
+                <span>{addOn.title}</span>
+                <span>+${addOn.pricing}/mo</span>
+              </li>
+            ))}
           </ul>
         </FourthStepContent>
         <div>
           <strong>Total &#40;per month&#41;</strong>
-          <strong>+$12/mo</strong>
+          <strong>+${total}/mo</strong>
         </div>
       </FourthStepContainer>
     </>

@@ -21,17 +21,7 @@ export const Footer = memo(function FooterComponent({
           Go Back
         </button>
       )}
-      <button
-        type={isLastStep ? 'submit' : 'button'}
-        onClick={(e) => {
-          if (!isLastStep) {
-            e.preventDefault()
-          }
-          nextStep()
-        }}
-      >
-        {isLastStep ? 'Confirm' : 'Next Step'}
-      </button>
+      <button type={'submit'}>{isLastStep ? 'Confirm' : 'Next Step'}</button>
     </FooterContainer>
   )
 })

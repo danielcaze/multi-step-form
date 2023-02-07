@@ -8,7 +8,7 @@ type RadioGroupPropsType = ComponentProps<typeof RadioContainer> & {
     icon?: string
     pricing: string
   }[]
-  recurringType: 'monthly' | 'yearly'
+  recurringType: 'Monthly' | 'Yearly'
 }
 
 export function RadioGroup({
@@ -36,11 +36,11 @@ export function RadioGroup({
             <strong>{item.title}</strong>
             <p>
               $
-              {recurringType === 'yearly'
+              {recurringType === 'Yearly'
                 ? `${Number(item.pricing) * 10}/yr`
                 : `${item.pricing}/mo`}
             </p>
-            {recurringType === 'yearly' && <span>2 months free</span>}
+            {recurringType === 'Yearly' && <span>2 months free</span>}
           </div>
         </RadioContent>
       ))}

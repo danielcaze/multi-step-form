@@ -2,25 +2,25 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { Checkbox } from './Checkbox'
 import { Header } from './Header'
 
-export function ThirdStep() {
-  const addOns = [
-    {
-      title: 'Online service',
-      subtitle: 'Access to mulyiplayer games',
-      pricing: '1',
-    },
-    {
-      title: 'Larger storage',
-      subtitle: 'Extra 1TB of cloud save',
-      pricing: '2',
-    },
-    {
-      title: 'Customizable profile',
-      subtitle: 'Custom theme on your profile',
-      pricing: '2',
-    },
-  ]
+export const addOns = [
+  {
+    title: 'Online service',
+    subtitle: 'Access to mulyiplayer games',
+    pricing: '1',
+  },
+  {
+    title: 'Larger storage',
+    subtitle: 'Extra 1TB of cloud save',
+    pricing: '2',
+  },
+  {
+    title: 'Customizable profile',
+    subtitle: 'Custom theme on your profile',
+    pricing: '2',
+  },
+]
 
+export function ThirdStep() {
   const { control } = useFormContext()
 
   return (

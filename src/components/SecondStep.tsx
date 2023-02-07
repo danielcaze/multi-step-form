@@ -6,25 +6,25 @@ import ProIcon from '../assets/images/icon-pro.svg'
 import { Switch } from './Switch'
 import { Controller, useFormContext } from 'react-hook-form'
 
-export function SecondStep() {
-  const plans = [
-    {
-      icon: ArcadeIcon,
-      title: 'Arcade',
-      pricing: '9',
-    },
-    {
-      icon: AdvancedIcon,
-      title: 'Advanced',
-      pricing: '12',
-    },
-    {
-      icon: ProIcon,
-      title: 'Pro',
-      pricing: '15',
-    },
-  ]
+export const plans = [
+  {
+    icon: ArcadeIcon,
+    title: 'Arcade',
+    pricing: '9',
+  },
+  {
+    icon: AdvancedIcon,
+    title: 'Advanced',
+    pricing: '12',
+  },
+  {
+    icon: ProIcon,
+    title: 'Pro',
+    pricing: '15',
+  },
+]
 
+export function SecondStep() {
   const { control, watch } = useFormContext()
 
   const recurringType = watch('recurringType')

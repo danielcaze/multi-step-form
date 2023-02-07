@@ -12,11 +12,23 @@ import { ThirdStep } from './components/ThirdStep'
 import { useMultiStep } from './hooks/useMultiStep'
 import { FormContainer, FormContent } from './styles'
 
+const errorMap = () => {
+  return { message: 'This field is required' }
+}
+
 const MultiStepFormSchema = zod.object({
-  name: zod.string(),
-  email: zod.string().email(),
+  name: zod
+    .string({
+      errorMap,
+    })
+    .min(2),
+  email: zod
+    .string({
+      errorMap,
+    })
+    .email(),
   phone: zod
-    .string()
+    .string({ errorMap })
     .regex(/^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/),
   plan: zod.enum(['Arcade', 'Advanced', 'Pro']),
   recurringType: zod.enum(['Monthly', 'Yearly']),
@@ -41,7 +53,10 @@ export function App() {
       addOns: [],
     },
   })
-  const { handleSubmit, watch } = methods
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods
 
   /*eslint-disable */
   const multiStep =
@@ -55,19 +70,21 @@ export function App() {
   /* eslint-enable */
 
   const {
-    step: Step,
     actualStep,
     isLastStep,
     isFirstStep,
+    isThankYouStep,
+    Step,
     goTo,
     nextStep,
     previousStep,
   } = multiStep
 
   function onSubmit(data: MultiStepForm) {
+    if (!isLastStep) return nextStep()
     console.log(data)
   }
-  console.log(watch())
+
   return (
     <FormContainer>
       <FormContent onSubmit={handleSubmit(onSubmit)}>
@@ -80,7 +97,7 @@ export function App() {
           <FormProvider {...methods}>
             <Box>{<Step {...multiStep} />}</Box>
           </FormProvider>
-          {!isLastStep && (
+          {!isThankYouStep && (
             <Footer
               isLastStep={isLastStep}
               isFirstStep={isFirstStep}

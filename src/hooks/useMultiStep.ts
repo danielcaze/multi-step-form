@@ -5,11 +5,12 @@ type useMultiStepProps = Array<(props: any) => JSX.Element>
 export function useMultiStep(steps: useMultiStepProps) {
   const [currentStep, setCurrentStep] = useState(0)
 
-  const isLastStep = steps.length - 1 === currentStep
-  const isFirstStep = currentStep === 0
   const actualStep = currentStep + 1
+  const isFirstStep = currentStep === 0
+  const isLastStep = actualStep === steps.length - 1
+  const isThankYouStep = actualStep === steps.length
 
-  const step = steps[currentStep]
+  const Step = steps[currentStep]
 
   function nextStep() {
     setCurrentStep((state) => {
@@ -36,10 +37,11 @@ export function useMultiStep(steps: useMultiStepProps) {
   }
 
   return {
-    step,
     actualStep,
     isLastStep,
     isFirstStep,
+    isThankYouStep,
+    Step,
     nextStep,
     previousStep,
     goTo,

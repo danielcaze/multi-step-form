@@ -25,10 +25,11 @@ export const InputContainer = styled.div<InputContainerProps>`
     css`
       div span {
         display: inline;
-        color: ${({ theme }) => theme.color.primary['strawberry-red']};
       }
 
-      input {
+      input,
+      input:hover,
+      input:focus {
         border-color: ${theme.color.primary['strawberry-red']};
       }
     `}
