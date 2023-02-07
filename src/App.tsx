@@ -53,10 +53,7 @@ export function App() {
       addOns: [],
     },
   })
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods
+  const { handleSubmit } = methods
 
   /*eslint-disable */
   const multiStep =
