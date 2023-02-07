@@ -2,21 +2,18 @@ import { memo } from 'react'
 import { FooterContainer } from './styles'
 
 type FooterPropsType = {
-  currentIndex: number
-  steps: string[]
+  isLastStep: boolean
+  isFirstStep: boolean
   nextStep(): void
   previousStep(): void
 }
 
 export const Footer = memo(function FooterComponent({
-  currentIndex,
-  steps,
+  isLastStep,
+  isFirstStep,
   previousStep,
   nextStep,
 }: FooterPropsType) {
-  const isFirstStep = currentIndex === 1
-  const isLastStep = steps.length === currentIndex
-
   return (
     <FooterContainer isLastStep={isLastStep}>
       {!isFirstStep && (

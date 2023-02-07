@@ -1,6 +1,6 @@
-import { ReactElement, useState } from 'react'
+import { useState } from 'react'
 
-type useMultiStepProps = ReactElement[]
+type useMultiStepProps = Array<(props: any) => JSX.Element>
 
 export function useMultiStep(steps: useMultiStepProps) {
   const [currentStep, setCurrentStep] = useState(0)
@@ -30,8 +30,8 @@ export function useMultiStep(steps: useMultiStepProps) {
   }
 
   function goTo(step: number) {
-    if (step <= steps.length || step >= 0) {
-      setCurrentStep(step)
+    if (step < steps.length || step >= 0) {
+      setCurrentStep(step - 1)
     }
   }
 

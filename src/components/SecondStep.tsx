@@ -3,8 +3,8 @@ import { RadioGroup } from './RadioGroup'
 import ArcadeIcon from '../assets/images/icon-arcade.svg'
 import AdvancedIcon from '../assets/images/icon-advanced.svg'
 import ProIcon from '../assets/images/icon-pro.svg'
-import { useState } from 'react'
 import { Switch } from './Switch'
+import { Controller, useFormContext } from 'react-hook-form'
 
 export function SecondStep() {
   const plans = [
@@ -25,17 +25,9 @@ export function SecondStep() {
     },
   ]
 
-  const [selectedPlan, setSelectedPlan] = useState(plans[0].title)
-  const [isYear, setIsYear] = useState(false)
-  const recurringType = isYear ? 'yearly' : 'monthly'
+  const { control, watch } = useFormContext()
 
-  function handleChangePlan(plan: string) {
-    setSelectedPlan(plan)
-  }
-
-  function handleChangeRecurringType(recurringType: boolean) {
-    setIsYear(recurringType)
-  }
+  const recurringType = watch('recurringType')
 
   return (
     <>
@@ -44,18 +36,24 @@ export function SecondStep() {
         subtitle="You have the option of monthly or yearly billing."
       />
       <fieldset style={{ border: 'none' }}>
-        <RadioGroup
-          items={plans}
-          recurringType={recurringType}
-          changePlan={handleChangePlan}
-          plan={selectedPlan}
+        <Controller
+          name="plan"
+          control={control}
+          render={({ field }) => (
+            <RadioGroup
+              {...field}
+              items={plans}
+              recurringType={recurringType}
+            />
+          )}
         />
       </fieldset>
-      <Switch
-        leftItem="Monthly"
-        rightItem="Yearly"
-        toggleSwitch={handleChangeRecurringType}
-        switchValue={isYear}
+      <Controller
+        name="recurringType"
+        control={control}
+        render={({ field }) => (
+          <Switch {...field} leftItem="Monthly" rightItem="Yearly" />
+        )}
       />
     </>
   )

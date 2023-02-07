@@ -1,7 +1,11 @@
 import { Header } from '../Header'
 import { FourthStepContainer, FourthStepContent } from './styles'
 
-export function FourthStep() {
+type FourthStepPropsType = {
+  goTo(index: number): void
+}
+
+export function FourthStep({ goTo }: FourthStepPropsType) {
   return (
     <>
       <Header
@@ -13,7 +17,9 @@ export function FourthStep() {
           <div>
             <div>
               <span>Arcade &#40;monthly&#41;</span>
-              <button>Change</button>
+              <button type="button" onClick={() => goTo(2)}>
+                Change
+              </button>
             </div>
             <span>$9/mo</span>
           </div>

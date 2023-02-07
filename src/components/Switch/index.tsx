@@ -1,28 +1,29 @@
+import { ComponentProps } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { SwitchContainer, SwitchRoot, SwitchThumb } from './styles'
 
-type SwitchPropsType = {
+type SwitchPropsType = ComponentProps<typeof SwitchContainer> & {
   leftItem: string
   rightItem: string
-  toggleSwitch(bool: boolean): void
-  switchValue: boolean
 }
 
-export function Switch({
-  leftItem,
-  rightItem,
-  toggleSwitch,
-  switchValue,
-}: SwitchPropsType) {
+export function Switch({ leftItem, rightItem, ...props }: SwitchPropsType) {
+  const { setValue, watch } = useFormContext()
+
   return (
     <SwitchContainer>
-      <button onClick={() => toggleSwitch(false)}>{leftItem}</button>
+      <button onClick={() => setValue(props.name, leftItem)}>{leftItem}</button>
       <SwitchRoot
-        checked={switchValue}
-        onCheckedChange={(value) => toggleSwitch(value)}
+        checked={watch('recurringType') === rightItem}
+        onCheckedChange={(value) =>
+          setValue(props.name, value ? rightItem : leftItem)
+        }
       >
         <SwitchThumb />
       </SwitchRoot>
-      <button onClick={() => toggleSwitch(true)}>{rightItem}</button>
+      <button onClick={() => setValue(props.name, rightItem)}>
+        {rightItem}
+      </button>
     </SwitchContainer>
   )
 }

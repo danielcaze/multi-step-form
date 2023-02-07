@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
 import { Checkbox } from './Checkbox'
 import { Header } from './Header'
 
@@ -21,16 +21,7 @@ export function ThirdStep() {
     },
   ]
 
-  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([])
-
-  function changeSelectedAddons(addon: string) {
-    setSelectedAddOns((state) => {
-      if (state.includes(addon)) {
-        return state.filter((item) => item !== addon)
-      }
-      return [...state, addon]
-    })
-  }
+  const { control } = useFormContext()
 
   return (
     <>
@@ -39,13 +30,18 @@ export function ThirdStep() {
         subtitle="Add-ons help enhance your gaming experience."
       />
       {addOns.map((addOn) => (
-        <Checkbox
+        <Controller
           key={addOn.title}
-          title={addOn.title}
-          subtitle={addOn.subtitle}
-          price={addOn.pricing}
-          recurringType="monthly"
-          toggleItem={changeSelectedAddons}
+          control={control}
+          name="addOns"
+          render={({ field }) => (
+            <Checkbox
+              {...field}
+              title={addOn.title}
+              subtitle={addOn.subtitle}
+              price={addOn.pricing}
+            />
+          )}
         />
       ))}
     </>

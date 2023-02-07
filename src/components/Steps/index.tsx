@@ -16,7 +16,10 @@ export function Steps({
       {steps.map((step, index) => {
         const stepNumber = index + 1
         return (
-          <StepsContent key={step} onClick={() => changeCurrentStep(index)}>
+          <StepsContent
+            key={step}
+            onClick={() => changeCurrentStep(stepNumber)}
+          >
             <Step
               current={
                 currentIndex === stepNumber ||

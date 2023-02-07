@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react'
+import { useFormContext } from 'react-hook-form'
 import Checkmark from '../../assets/images/icon-checkmark.svg'
 import { CheckboxContainer, CheckboxIndicator, CheckboxRoot } from './styles'
 
@@ -6,24 +7,27 @@ type CheckboxPropTypes = ComponentProps<typeof CheckboxRoot> & {
   title: string
   subtitle: string
   price: string
-  recurringType: 'monthly' | 'yearly'
-  toggleItem(item: string): void
 }
 
 export function Checkbox({
   title,
   price,
   subtitle,
-  recurringType,
-  toggleItem,
   ...props
 }: CheckboxPropTypes) {
-  function handleCheckChange() {
-    toggleItem(title)
-  }
+  const { setValue, watch } = useFormContext()
+  const newValue = props.value.includes(title)
+    ? props.value.filter((item: string) => item !== title)
+    : [...props.value, title]
+
   return (
     <CheckboxContainer>
-      <CheckboxRoot id={title} onCheckedChange={handleCheckChange} {...props}>
+      <CheckboxRoot
+        {...props}
+        checked={props.value.includes(title)}
+        id={title}
+        onCheckedChange={() => setValue(props.name, newValue)}
+      >
         <CheckboxIndicator>
           <img src={Checkmark} alt="" />
         </CheckboxIndicator>
@@ -35,7 +39,7 @@ export function Checkbox({
         </div>
         <span>
           +$
-          {recurringType === 'yearly'
+          {watch('recurringType') === 'Yearly'
             ? `${Number(price) * 10}/yr`
             : `${price}/mo`}
         </span>

@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { RadioContainer, RadioContent } from './styles'
 
 type RadioGroupPropsType = ComponentProps<typeof RadioContainer> & {
@@ -8,23 +9,20 @@ type RadioGroupPropsType = ComponentProps<typeof RadioContainer> & {
     pricing: string
   }[]
   recurringType: 'monthly' | 'yearly'
-  changePlan(plan: string): void
-  plan: string
 }
 
 export function RadioGroup({
   items,
   recurringType,
-  plan,
-  changePlan,
   ...props
 }: RadioGroupPropsType) {
+  const { setValue } = useFormContext()
+
   return (
     <RadioContainer
       type="single"
-      value={plan}
       aria-label="Plans"
-      onValueChange={(value) => changePlan(value)}
+      onValueChange={(value: string) => setValue(props.name, value)}
       {...props}
     >
       {items.map((item) => (
