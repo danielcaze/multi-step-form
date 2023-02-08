@@ -76,7 +76,8 @@ export function App() {
   } = multiStep
 
   function onSubmit(data: MultiStepForm) {
-    if (!isLastStep) return nextStep()
+    nextStep()
+    if (!isLastStep) return
     console.log(data)
   }
 
@@ -84,6 +85,7 @@ export function App() {
     <FormContainer>
       <FormContent onSubmit={handleSubmit(onSubmit)}>
         <Steps
+          isThankYouStep={isThankYouStep}
           currentIndex={actualStep}
           steps={steps}
           changeCurrentStep={goTo}

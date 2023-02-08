@@ -3,12 +3,14 @@ import { Step, StepsContainer, StepsContent } from './styles'
 type StepsPropsType = {
   currentIndex: number
   steps: string[]
+  isThankYouStep: boolean
   changeCurrentStep(currentStep: number): void
 }
 
 export function Steps({
   currentIndex,
   steps,
+  isThankYouStep,
   changeCurrentStep,
 }: StepsPropsType) {
   return (
@@ -18,7 +20,9 @@ export function Steps({
         return (
           <StepsContent
             key={step}
-            onClick={() => changeCurrentStep(stepNumber)}
+            onClick={() => {
+              if (!isThankYouStep) changeCurrentStep(stepNumber)
+            }}
           >
             <Step
               current={
