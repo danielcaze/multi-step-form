@@ -12,7 +12,9 @@ export function Switch({ leftItem, rightItem, ...props }: SwitchPropsType) {
 
   return (
     <SwitchContainer>
-      <button onClick={() => setValue(props.name, leftItem)}>{leftItem}</button>
+      <button type="button" onClick={() => setValue(props.name, leftItem)}>
+        {leftItem}
+      </button>
       <SwitchRoot
         checked={watch('recurringType') === rightItem}
         onCheckedChange={(value) =>
@@ -21,7 +23,7 @@ export function Switch({ leftItem, rightItem, ...props }: SwitchPropsType) {
       >
         <SwitchThumb />
       </SwitchRoot>
-      <button onClick={() => setValue(props.name, rightItem)}>
+      <button type="button" onClick={() => setValue(props.name, rightItem)}>
         {rightItem}
       </button>
     </SwitchContainer>

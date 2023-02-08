@@ -1,4 +1,5 @@
 import { useFormContext, Controller } from 'react-hook-form'
+import ReactInputMask from 'react-input-mask'
 import { Header } from './Header'
 import { Input } from './Input'
 
@@ -43,14 +44,28 @@ export function FirstStep() {
         />
         <Controller
           control={control}
-          render={({ field }) => (
-            <Input
-              {...field}
-              type="tel"
-              label="Phone Number"
-              placeholder="e.g. +55 83 988979997"
-              error={errors.phone?.message as string}
-            />
+          render={({ field: { onBlur, onChange, value, ...inputProps } }) => (
+            <ReactInputMask
+              mask="+99 (99) 99999-9999"
+              control={control}
+              onBlur={onBlur}
+              onChange={onChange}
+              value={value}
+            >
+              {/* @ts-ignore */}
+              {() => (
+                <Input
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={value}
+                  {...inputProps}
+                  type="tel"
+                  label="Phone Number"
+                  placeholder="e.g. +55 83 988979997"
+                  error={errors.phone?.message as string}
+                />
+              )}
+            </ReactInputMask>
           )}
           name="phone"
         />

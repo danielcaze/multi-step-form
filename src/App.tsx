@@ -27,9 +27,7 @@ const MultiStepFormSchema = zod.object({
       errorMap,
     })
     .email(),
-  phone: zod
-    .string({ errorMap })
-    .regex(/^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/),
+  phone: zod.string({ errorMap }).regex(/^\+(55)\s\(\d{2}\)\s\d{4,5}-\d{4}$/),
   plan: zod.enum(['Arcade', 'Advanced', 'Pro']),
   recurringType: zod.enum(['Monthly', 'Yearly']),
   addOns: zod
